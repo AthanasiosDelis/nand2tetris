@@ -14,5 +14,9 @@ CHIP DMux {
     OUT a, b;
 
     PARTS:
-    // Put your code here:
+    Nand( a = sel, b = sel, out = selnot);
+	Nand( a = bnot, b = bnot, out = b);
+	Nand( a = anot, b = anot, out = a);	
+	Nand( a = in, b = selnot, out = anot);
+	Nand( a = in, b = sel, out = bnot);
 }

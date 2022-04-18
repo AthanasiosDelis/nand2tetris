@@ -5,7 +5,7 @@
 
 /**
  * 8-way Or: 
- * out = (in[0] or in[1] or ... or in[7])
+ * out  =  (in[0] or in[1] or ... or in[7])
  */
 
 CHIP Or8Way {
@@ -14,4 +14,11 @@ CHIP Or8Way {
 
     PARTS:
     // Put your code here:
+	Or (a = in[0], b = in[1], out = or01);
+	Or (a = in[2], b = in[3], out = or23);
+	Or (a = in[4], b = in[5], out = or45);
+	Or (a = in[6], b = in[7], out = or67);
+	Or (a = or01,b = or45, out = or0145);
+	Or (a = or23, b = or67, out = or2367);
+	Or (a = or2367, b = or0145, out = out);
 }

@@ -13,5 +13,9 @@ CHIP Add16 {
     OUT out[16];
 
     PARTS:
-   // Put you code here:
+	Add4CLA( a = a[0..3], b = b[0..3], c = false, s = out[0..3], carry = c4);
+	Add4CLA( a = a[4..7], b = b[4..7], c = c4, s = out[4..7], carry = c8);
+	Add4CLA( a = a[8..11], b = b[8..11], c = c8, s = out[8..11], carry = c12);
+	Add4CLA( a = a[12..15], b = b[12..15], c = c12, s = out[12..15], carry = c16);
+   
 }

@@ -1,0 +1,25 @@
+CHIP Add4CLA {
+    IN a[4], b[4], c;
+    OUT s[4], carry;
+
+    PARTS:
+   // Put you code here:
+   HalfAdder( a = a[0], b = b[0], sum = p0, carry = g0) ;
+   HalfAdder( a = a[1], b = b[1], sum = p1, carry = g1) ;
+   HalfAdder( a = a[2], b = b[2], sum = p2, carry = g2) ;
+   HalfAdder( a = a[3], b = b[3], sum = p3, carry = g3) ;
+   
+   And( a = p0, b = c, out = pc0);
+   Or( a = g0, b = pc0, out = c1);
+   And( a = p1, b = c1, out = pc1);
+   Or( a = g1, b = pc1, out = c2);
+   And( a = p2, b = c2, out = pc2);
+   Or( a = g2, b = pc2, out = c3);
+   And( a = p3, b = c3, out = pc3);
+   Or( a = g3, b = pc3, out = carry);
+      
+   Xor( a = p0, b = c, out = s[0]) ;
+   Xor( a = p1, b = c1, out = s[1]) ;
+   Xor( a = p2, b = c2, out = s[2]) ;
+   Xor( a = p3, b = c3, out = s[3]) ;
+}
